@@ -1,0 +1,9 @@
+.metadata
+.DS_Store
+target
+build
+bin
+.gradle
+Servers
+.settings
+.recommenders
