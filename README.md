@@ -25,7 +25,7 @@ http://18.222.105.233:8080/ElectricBillingREST/
 
 This project not only incorporates the CRUD functionality with SpringREST, but also several sorting methods to specialize the API result set that is produced.
 
-### Project Operation
+## Project Operation
 
 This program has several methods to perform basic CRUD functions. The two GET methods, electricbills/ and electricbills/{id}/, retrieve either all electric bill files or a single result based upon the id the user input. If the user uses the POST method, they can create an ElectricBill object with its own unique id in the database (electricbills/). The final remaining CRUD functions can be called up with PUT, PATCH, and DELETE based on the id the user inputs (electricbills/{id}).
 
