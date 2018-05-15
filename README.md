@@ -27,9 +27,9 @@ This project not only incorporates the CRUD functionality with SpringREST, but a
 
 ### Project Operation
 
-This program has several methods to perform basic CRUD functions. The two GET methods, electricbills and electricbills/{id}, retrieve either all electric bill files or a single result based upon the id the user input. If the user uses the POST method, they can create an ElectricBill object with its own unique id in the database. The final remaining CRUD functions can be called up with PUT, PATCH, and DELETE based on the id the user inputs.
+This program has several methods to perform basic CRUD functions. The two GET methods, electricbills/ and electricbills/{id}/, retrieve either all electric bill files or a single result based upon the id the user input. If the user uses the POST method, they can create an ElectricBill object with its own unique id in the database (electricbills/). The final remaining CRUD functions can be called up with PUT, PATCH, and DELETE based on the id the user inputs (electricbills/{id}).
 
-The program also allows you to select specific data based on the fields for the ElectricBill entity. For example, if you call up electricbills/search/manager/{lastName}, you retrieve all electric bill files where the manager had that particular last name. Additionally, if you call up electricbills/search/price/{low}/{high}, electricbills/search/year/{low}/{high}, or electricbills/search/wattage/{low}/{high}, you retrieve all electric bill files within that particular range of cost, wattage, or years.
+The program also allows you to select specific data based on the fields for the ElectricBill entity. For example, if you call up electricbills/search/manager/{lastName}/, you retrieve all electric bill files where the manager had that particular last name. Additionally, if you call up electricbills/search/price/{low}/{high}/, electricbills/search/year/{low}/{high}/, or electricbills/search/wattage/{low}/{high}/, you retrieve all electric bill files within that particular range of cost, wattage, or years.
 
 ## Lessons Learned
 
