@@ -18,4 +18,11 @@ public interface ElectricBillService {
 
 	Boolean delete(int id);
 
+	List<ElectricBill> findByManager(String lastName);
+	
+	List<ElectricBill> findByYearRange(int lowest, int highest);
+	
+	List<ElectricBill> findByCostRange(double lowest, double highest);
+	
+	List<ElectricBill> findByWattageRange(int lowest, int highest);
 }

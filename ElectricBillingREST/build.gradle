@@ -31,27 +31,19 @@ repositories {
 
 
 dependencies {
-	//compile project(':ElectricBillingTracker')
-	//compile('org.springframework.boot:spring-boot-starter-data-jpa')
-	//compile('org.springframework.boot:spring-boot-starter-web')
-	//compile 'org.junit.jupiter:junit-jupiter-api:5.0.1'
-	
-	//runtime('mysql:mysql-connector-java')
-	
-	//providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
-	
-	//testCompile('org.apiguardian:apiguardian-api:1.0.0')
-	//testCompile('org.springframework.boot:spring-boot-starter-test')
-	//testRuntime('org.junit.jupiter:junit-jupiter-engine:5.0.1',
-	        //'org.junit.vintage:junit-vintage-engine:4.12.1',
-	        //'org.junit.platform:junit-platform-launcher:1.0.1',
-	        //'org.junit.platform:junit-platform-runner:1.0.1')
-	        
 	compile project(':ElectricBillingTracker')
-    compile('org.springframework.boot:spring-boot-starter-data-jpa')
-    compile('org.springframework.boot:spring-boot-starter-web')
-    runtime('mysql:mysql-connector-java')
-    testCompile('org.springframework.boot:spring-boot-starter-test')
-    //LOOK OUT BELOW
-    providedRuntime ('org.springframework.boot:spring-boot-starter-tomcat')
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile 'org.junit.jupiter:junit-jupiter-api:5.0.1'
+	
+	runtime('mysql:mysql-connector-java')
+	
+	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+	
+	testCompile('org.apiguardian:apiguardian-api:1.0.0')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	testRuntime('org.junit.jupiter:junit-jupiter-engine:5.0.1',
+	        'org.junit.vintage:junit-vintage-engine:4.12.1',
+	        'org.junit.platform:junit-platform-launcher:1.0.1',
+	        'org.junit.platform:junit-platform-runner:1.0.1')
 }

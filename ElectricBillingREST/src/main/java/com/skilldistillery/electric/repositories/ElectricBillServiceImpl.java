@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skilldistillery.entities.ElectricBill;
 
 @Service
@@ -38,30 +39,34 @@ public class ElectricBillServiceImpl implements ElectricBillService {
 		managedBill.setManagerFirstName(jsonBill.getManagerFirstName());
 		managedBill.setManagerLastName(jsonBill.getManagerLastName());
 
-		return managedBill;
+		ebRepo.flush();
+		
+		return ebRepo.findById(id).get();
 	}
 
 	@Override
-	public ElectricBill update(ElectricBill newBill, int id) {
+	public ElectricBill update(ElectricBill jsonBill, int id) {
 		ElectricBill managedBill = ebRepo.findById(id).get();
 		
-		if(newBill.getCost() != 0) {
-			managedBill.setCost(newBill.getCost());
+		if(jsonBill.getCost() != 0) {
+			managedBill.setCost(jsonBill.getCost());
 		}
-		if(newBill.getYear() != 0) {
-			managedBill.setYear(newBill.getYear());
+		if(jsonBill.getYear() != 0) {
+			managedBill.setYear(jsonBill.getYear());
 		}
-		if(newBill.getWattage() != 0) {
-			managedBill.setWattage(newBill.getWattage());
+		if(jsonBill.getWattage() != 0) {
+			managedBill.setWattage(jsonBill.getWattage());
 		}
-		if(newBill.getManagerFirstName() != null && !newBill.getManagerFirstName().equals("")) {
-			managedBill.setManagerFirstName(newBill.getManagerFirstName());
+		if(jsonBill.getManagerFirstName() != null && !jsonBill.getManagerFirstName().equals("")) {
+			managedBill.setManagerFirstName(jsonBill.getManagerFirstName());
 		}
-		if(newBill.getManagerLastName() != null && !newBill.getManagerLastName().equals("")) {
-			managedBill.setManagerLastName(newBill.getManagerLastName());
+		if(jsonBill.getManagerLastName() != null && !jsonBill.getManagerLastName().equals("")) {
+			managedBill.setManagerLastName(jsonBill.getManagerLastName());
 		}
+
+		ebRepo.flush();
 		
-		return null;
+		return ebRepo.findById(id).get();
 	}
 
 	@Override
@@ -71,6 +76,26 @@ public class ElectricBillServiceImpl implements ElectricBillService {
 			return false;
 		}
 		return true;
+	}
+
+	@Override
+	public List<ElectricBill> findByManager(String lastName) {
+		return ebRepo.findByManagerLastName(lastName);
+	}
+
+	@Override
+	public List<ElectricBill> findByYearRange(int lowest, int highest) {
+		return ebRepo.findByYearBetween(lowest, highest);
+	}
+
+	@Override
+	public List<ElectricBill> findByCostRange(double lowest, double highest) {
+		return ebRepo.findByCostBetween(lowest, highest);
+	}
+
+	@Override
+	public List<ElectricBill> findByWattageRange(int lowest, int highest) {
+		return ebRepo.findByWattageBetween(lowest, highest);
 	}
 
 }
