@@ -18,6 +18,9 @@
   <li>Gradle</li>
 </ul>
 
+## Project Location
+http://18.222.105.233:8080/ElectricBillingREST/
+
 ## Project Description
 
 This project not only incorporates the CRUD functionality with SpringREST, but also several sorting methods to specialize the API result set that is produced.
