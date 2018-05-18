@@ -1,4 +1,4 @@
-package com.skilldistillery.electric.repositories;
+package com.skilldistillery.electric.data;
 
 import java.util.List;
 
@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.skilldistillery.electric.repositories.ElectricBillRepository;
 import com.skilldistillery.entities.ElectricBill;
 
 @Service

@@ -1,4 +1,4 @@
-package com.skilldistillery.electric.repositories;
+package com.skilldistillery.electric.data;
 
 import java.util.List;
 
