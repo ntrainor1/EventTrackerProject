@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ACME ELectric</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="css/styles.css" type="text/css">
+<script type="text/javascript" src="js/electricScript.js"></script>
+</head>
+<body>
+	<h1>ACME Electric Record Company</h1>
+	<div class="row">
+		<form name="billForm">
+			<input type="number" name="billId">
+			<button name="lookup">Get Bill by Id</button>
+		</form>
+		<form name="initCreate">
+			<button name="initialize">Add Bill</button>
+		</form>
+		<div id="create">
+		</div>
+	</div>
+	<div class="row">
+		<div id="sidebarLeft" class="col-sm-1">
+			.col
+		</div>
+		<div id="sidebar" class="col-sm-1">
+			<span id="list" ></span>
+		</div>
+		<div id="sidebarRight" class="col-sm-1">
+			.col
+		</div>
+		<div id="showLeft" class="col-sm-1">
+			.col
+		</div>
+		<div id="show" class="col-sm-7">
+			<span id="display" ></span>
+		</div>
+		<div id="showRight" class="col-sm-1">
+			.col
+		</div>
+	</div>
+</body>
+</html>

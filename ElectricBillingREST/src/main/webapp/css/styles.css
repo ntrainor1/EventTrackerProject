@@ -1,0 +1,24 @@
+#sidebarLeft, #sidebar, #sidebarRight {
+	background-color: lavender;
+}
+
+#showLeft, #show, #showRight {
+	background-color: lavenderblush;
+}
+
+li {
+	color: red;
+}
+
+li:hover {
+	font-weight:bold;
+	background-color: #fceb00;
+}
+
+table, td {
+   border: 1px solid black;
+}
+
+td {
+   width: 50%;
+}
