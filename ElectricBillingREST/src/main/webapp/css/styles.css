@@ -6,19 +6,22 @@
 	background-color: lavenderblush;
 }
 
-li {
+td {
 	color: red;
+	width: 50%;
 }
 
-li:hover {
-	font-weight:bold;
+td:hover {
+	font-weight: bold;
 	background-color: #fceb00;
 }
 
 table, td {
-   border: 1px solid black;
+	border: 1px solid black;
 }
 
-td {
-   width: 50%;
+#create {
+	margin: auto;
+	width: 50%;
+	padding: 10px;
 }
