@@ -1,19 +1,35 @@
+body {
+	background-color: #AA5939;
+}
+
+h1, img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    color: yellow;
+}
+
+img {
+	width: 250px;
+	height: 250px;
+}
+
 #sidebarLeft, #sidebar, #sidebarRight {
-	background-color: lavender;
+	background-color: #AA7939;
 }
 
 #showLeft, #show, #showRight {
-	background-color: lavenderblush;
+	background-color: #806515;
 }
 
 td {
-	color: red;
+	color: yellow;
 	width: 50%;
 }
 
 td:hover {
-	font-weight: bold;
-	background-color: #fceb00;
+	background-color: #D4A76A;
 }
 
 table, td {

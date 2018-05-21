@@ -12,6 +12,7 @@ function index() {
 			if (xhr.status == 200 || xhr.status == 201) {
 				var billList = JSON.parse(xhr.responseText);
 				console.log(billList);
+				aggregate(billList);
 				displayBillList(billList);
 			} else {
 				console.log("Unable to retrieve list of bills.");
@@ -21,6 +22,38 @@ function index() {
 		}
 	};
 	xhr.send(null);
+}
+
+function aggregate(billList) {
+	var totalYears = document.getElementById('totalYears');
+	totalYears.textContent = "";
+	totalYears.textContent = billList.length;
+	
+	var totalCostTally = 0;
+	var totalWattageTally = 0;
+	
+	billList.forEach(function(value, index, array) {
+		totalCostTally += value.cost;
+		totalWattageTally += value.wattage;
+	});
+	
+	var totalCosts = document.getElementById('totalCosts');
+	totalCosts.textContent = "";
+	totalCosts.textContent = "$" + totalCostTally;
+	
+	var totalWattage = document.getElementById('totalWattage');
+	totalWattage.textContent = "";
+	totalWattage.textContent = totalWattageTally;
+	
+	var averageCost = document.getElementById('averageCosts');
+	var averageCostTally = (totalCostTally / billList.length);
+	averageCost.textContent = "";
+	averageCost.textContent = "$" + averageCostTally;
+	
+	var averageWattage = document.getElementById('averageWattage');
+	var averageWattageTally = (totalWattageTally / billList.length);
+	averageWattage.textContent = "";
+	averageWattage.textContent = averageWattageTally;
 }
 
 function displayBillList(billList) {
@@ -70,11 +103,15 @@ function init() {
 		var formYear = document.createElement('input');
 		formYear.setAttribute('name', 'year');
 		formYear.setAttribute('type', 'number');
+		formYear.setAttribute('min', "1900");
+		formYear.setAttribute('max', "2100");
 		formYear.required = true;
 
 		var formCost = document.createElement('input');
 		formCost.setAttribute('name', 'cost');
 		formCost.setAttribute('type', 'number');
+		formCost.setAttribute('step', "0.01");
+		formCost.setAttribute('min', "0");
 		formCost.required = true;
 
 		var formWattage = document.createElement('input');
@@ -119,34 +156,34 @@ function generateCreateLabels() {
 	var costLabel = document.createElement("LABEL");
 	var costText = document.createTextNode("Cost ");
 	costLabel.setAttribute("for", "cost");
-	costLabel.setAttribute("id", "costLabel");
+	costLabel.setAttribute("id", "costCreateLabel");
 	costLabel.appendChild(costText);
 	document.getElementById("createForm").insertBefore(costLabel, document.getElementsByName("cost")[0]);
-	document.getElementById("createForm").insertBefore(document.createElement("BR"), document.getElementById("costLabel"));
+	document.getElementById("createForm").insertBefore(document.createElement("BR"), document.getElementById("costCreateLabel"));
 
 	var wattageLabel = document.createElement("LABEL");
 	var wattageText = document.createTextNode("Wattage ");
 	wattageLabel.setAttribute("for", "wattage");
-	wattageLabel.setAttribute("id", "wattageLabel");
+	wattageLabel.setAttribute("id", "wattageCreateLabel");
 	wattageLabel.appendChild(wattageText);
 	document.getElementById("createForm").insertBefore(wattageLabel, document.getElementsByName("wattage")[0]);
-	document.getElementById("createForm").insertBefore(document.createElement("BR"), document.getElementById("wattageLabel"));
+	document.getElementById("createForm").insertBefore(document.createElement("BR"), document.getElementById("wattageCreateLabel"));
 
 	var fNameLabel = document.createElement("LABEL");
 	var fNameText = document.createTextNode("Manager First Name ");
 	fNameLabel.setAttribute("for", "managerFirstName");
-	fNameLabel.setAttribute("id", "fNameLabel");
+	fNameLabel.setAttribute("id", "fNameCreateLabel");
 	fNameLabel.appendChild(fNameText);
 	document.getElementById("createForm").insertBefore(fNameLabel, document.getElementsByName("managerFirstName")[0]);
-	document.getElementById("createForm").insertBefore(document.createElement("BR"), document.getElementById("fNameLabel"));
+	document.getElementById("createForm").insertBefore(document.createElement("BR"), document.getElementById("fNameCreateLabel"));
 
 	var lNameLabel = document.createElement("LABEL");
 	var lNameText = document.createTextNode("Manager Last Name ");
 	lNameLabel.setAttribute("for", "managerLastName");
-	lNameLabel.setAttribute("id", "lNameLabel");
+	lNameLabel.setAttribute("id", "lNameCreateLabel");
 	lNameLabel.appendChild(lNameText);
 	document.getElementById("createForm").insertBefore(lNameLabel, document.getElementsByName("managerLastName")[0]);
-	document.getElementById("createForm").insertBefore(document.createElement("BR"), document.getElementById("lNameLabel"));
+	document.getElementById("createForm").insertBefore(document.createElement("BR"), document.getElementById("lNameCreateLabel"));
 
 	document.getElementById("createForm").insertBefore(document.createElement("BR"), document.getElementsByName("submitCreate")[0]);
 }
@@ -320,6 +357,8 @@ function createUpdateForm(billId, billYear, billCost, billWattage, billFirstName
 	var formYear = document.createElement('input');
 	formYear.setAttribute('name', 'yearUpdate');
 	formYear.setAttribute('type', 'number');
+	formYear.setAttribute('min', 1900);
+	formYear.setAttribute('max', 2100);
 	formYear.setAttribute('value', billYear);
 	formYear.required = true;
 
@@ -479,6 +518,7 @@ function deleteBill(billId) {
 				if (xhr.responseText) {
 					index();
 					document.getElementById('display').textContent = "";
+					document.getElementById('update').textContent = "";
 				}
 			} else {
 				console.error("An error has occurred");

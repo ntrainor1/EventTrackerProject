@@ -11,32 +11,69 @@
 <script type="text/javascript" src="js/electricScript.js"></script>
 </head>
 <body>
+	<img alt="A lightbulb" src="images/standard-light-bulb.png">
 	<h1>ACME Electric Record Company</h1>
-	<div>
-		<form name="billForm">
-			<input type="number" name="billId">
-			<button name="lookup">Get Bill by Id</button>
-		</form>
-		<form name="initCreate">
-			<button name="initialize">Add Bill</button>
-		</form>
-		<div id="create">
+	<div class="row">
+		<div id="sidebarLeft" class="col-sm-2">
+		</div>
+		<div id="sidebarLeft" class="col-sm-4">
+			<form name="billForm">
+				<input type="number" name="billId">
+				<button name="lookup">Get Bill by Id</button>
+			</form>
+		</div>
+		<div id="sidebarLeft" class="col-sm-4">
+			<form name="initCreate">
+				<button name="initialize">Add Bill</button>
+			</form>
+		</div>
+		<div id="sidebarLeft" class="col-sm-2">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-2">
+		</div>
+		<div id="create" class="col-sm-8">
+		</div>
+		<div class="col-sm-2">
 		</div>
 	</div>
 	<div class="row">
 		<div id="sidebarLeft" class="col-sm-1">
-			.col
 		</div>
-		<div id="sidebar" class="col-sm-1">
+		<div id="sidebar" class="col-sm-3">
+			<table>
+				<tbody>
+					<tr>
+						<td>Total Years of Transactions   </td>
+						<td id="totalYears"></td>
+					</tr>
+					<tr>
+						<td>Total Costs</td>
+						<td id="totalCosts"></td>
+					</tr>
+					<tr>
+						<td>Total Wattage Used</td>
+						<td id="totalWattage"></td>
+					</tr>
+					<tr>
+						<td>Average Yearly Costs</td>
+						<td id="averageCosts"></td>
+					</tr>
+					<tr>
+						<td>Average Yearly Wattage Used   </td>
+						<td id="averageWattage"></td>
+					</tr>
+				</tbody>
+			</table>
+			<br>
 			<span id="list" ></span>
-		</div>
-		<div id="sidebarRight" class="col-sm-1">
-			.col
+			<br>
+			<br>
 		</div>
 		<div id="showLeft" class="col-sm-1">
-			.col
 		</div>
-		<div id="show" class="col-sm-4">
+		<div id="show" class="col-sm-3">
 			<span id="display" ></span>
 		</div>
 		<div id="showRight" class="col-sm-4">
