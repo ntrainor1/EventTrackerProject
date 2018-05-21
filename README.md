@@ -3,6 +3,7 @@
 ## Technologies Used
 <ul>
   <li>Java</li>
+  <li>JavaScript</li>
   <li>SpringMVC</li>
   <li>SpringREST</li>
   <li>JPA</li>
@@ -23,15 +24,17 @@ http://18.222.105.233:8080/ElectricBillingREST/
 
 ## Project Description
 
-This project not only incorporates the CRUD functionality with SpringREST, but also several sorting methods to specialize the API result set that is produced.
+This project not only incorporates the CRUD functionality with SpringREST, but also JavaScript implementation allowing these operations to take place exclusively on a single page.
 
 ## Project Operation
 
-This program has several methods to perform basic CRUD functions. The two GET methods, api/electricbills/ and api/electricbills/{id}/, retrieve either all electric bill files or a single result based upon the id the user input. If the user uses the POST method, they can create an ElectricBill object with its own unique id in the database (api/electricbills/). The final remaining CRUD functions can be called up with PUT, PATCH, and DELETE based on the id the user inputs (api/electricbills/{id}).
+This website allows the user to perform basic CRUD functions. For reading, a JS function retrieves the whole list of electric bills in the database on the left-hand table. Additionally, a user can read the details of the bill by either clicking on it in the aforementioned table or by doing a search by id. A user can also create an entry using the Add Bill button and filling out the details. One can see the database and display section update itself whenever a user creates a new bill. The final remaining CRUD functions, update and delete, can be called up when the user selects a specific bill in the display section and presses the appropriate update or delete button.
 
-The program also allows you to select specific data based on the fields for the ElectricBill entity. For example, if you call up api/electricbills/search/manager/{lastName}/, you retrieve all electric bill files where the manager had that particular last name. Additionally, if you call up api/electricbills/search/price/{low}/{high}/, api/electricbills/search/year/{low}/{high}/, or api/electricbills/search/wattage/{low}/{high}/, you retrieve all electric bill files within that particular range of cost, wattage, or years.
+JS functionality allows for the constant update of the left-hand table listing based on the user input, keeping the page constantly updated without redirecting the user to a different webpage. The script also allows for processing and aggregating the data to keep track of the entity details from the database. For example, in the aggregate table above the listings on the left-hand side, it not only keeps track of how many entries are in the database, total costs, and total wattage used by the company, but also the average yearly costs and average yearly wattage used, with each table row being updated with each new bill the user either creates or deletes.
 
 ## Lessons Learned
 
 * The necessity of the flush.<br>
 * Always be mindful of what can be copy/pasted, and what cannot. Always double check!<br>
+* When creating HTML5 elements in JS, it is VERY difficult to get certain attributes associated with a given element. For example, I was unable to properly integrate the logic for a min-max year for creating or updating a bill or for making a given input required. If you look closely at the elements in the Java Developer Tools, you will see the min-max and required fields present, however, the browser appears unable to properly implement/recognize them.<br>
+* As a follow-up to the above, a Java developer has some variety for providing checks on user input, by providing checks against empty fields either in the JS or in Java itself.<br>
