@@ -102,13 +102,13 @@ function init() {
 		createForm.setAttribute('id', 'createForm');
 		var formYear = document.createElement('input');
 		formYear.setAttribute('name', 'year');
+		formYear.setAttribute('id', 'createYear');
 		formYear.setAttribute('type', 'number');
-		formYear.setAttribute('min', "1900");
-		formYear.setAttribute('max', "2100");
 		formYear.required = true;
 
 		var formCost = document.createElement('input');
 		formCost.setAttribute('name', 'cost');
+		formCost.setAttribute('id', 'createCost');
 		formCost.setAttribute('type', 'number');
 		formCost.setAttribute('step', "0.01");
 		formCost.setAttribute('min', "0");
@@ -116,6 +116,7 @@ function init() {
 
 		var formWattage = document.createElement('input');
 		formWattage.setAttribute('name', 'wattage');
+		formWattage.setAttribute('id', 'createWattage');
 		formWattage.setAttribute('type', 'number');
 		formWattage.required = true;
 
@@ -205,13 +206,38 @@ function establishCreateClickEvent() {
 		var managerLastName = createSubmitButton.parentElement.managerLastName.value;
 		console.log(year + cost + wattage + managerFirstName + managerLastName);
 
-		if (year != 0 & cost != 0 & wattage != 0 & managerFirstName != "" & managerLastName != "") {
-			createBill(year, cost, wattage, managerFirstName, managerLastName);
+		if (year < 1900 | year > 2100) {
+			document.getElementById("createYear").focus();
+			var displayColumn = document.getElementById('display');
+			displayColumn.textContent = "Your year must be between 1900 and 2100";
 		}
 		else {
-			var displayColumn = document.getElementById('display');
-			displayColumn.textContent = 'All fields must be filled in order to create a new bill entry.';
+			document.getElementById("createYear").blur();
+			if (cost < 0) {
+				document.getElementById("createCost").focus();
+				var displayColumn = document.getElementById('display');
+				displayColumn.textContent = "Your cost value must be positive";
+			}
+			else {
+				document.getElementById("createCost").blur();
+				if (wattage < 0) {
+					document.getElementById("createWattage").focus();
+					var displayColumn = document.getElementById('display');
+					displayColumn.textContent = "Your wattage value must be positive";
+				}
+				else {
+					document.getElementById("createWattage").blur();
+					if (year != 0 & cost != 0 & wattage != 0 & managerFirstName != "" & managerLastName != "") {
+						createBill(year, cost, wattage, managerFirstName, managerLastName);
+					}
+					else {
+						var displayColumn = document.getElementById('display');
+						displayColumn.textContent = 'All fields must be filled in order to create a new bill entry.';
+					}
+				}
+			}
 		}
+		
 
 	index();
 	});
@@ -357,20 +383,22 @@ function createUpdateForm(billId, billYear, billCost, billWattage, billFirstName
 	var formYear = document.createElement('input');
 	formYear.setAttribute('name', 'yearUpdate');
 	formYear.setAttribute('type', 'number');
-	formYear.setAttribute('min', 1900);
-	formYear.setAttribute('max', 2100);
+	formYear.setAttribute('id', "updateYear");
 	formYear.setAttribute('value', billYear);
 	formYear.required = true;
 
 	var formCost = document.createElement('input');
 	formCost.setAttribute('name', 'costUpdate');
 	formCost.setAttribute('type', 'number');
+	formCost.setAttribute('step', "0.01");
+	formCost.setAttribute('id', "updateCost");
 	formCost.setAttribute('value', billCost);
 	formCost.required = true;
 
 	var formWattage = document.createElement('input');
 	formWattage.setAttribute('name', 'wattageUpdate');
 	formWattage.setAttribute('type', 'number');
+	formWattage.setAttribute('id', "updateWattage");
 	formWattage.setAttribute('value', billWattage);
 	formWattage.required = true;
 
@@ -420,15 +448,34 @@ function establishUpdateClickEvent(billId) {
 		var managerLastName = updateSubmitButton.parentElement.managerLastNameUpdate.value;
 		console.log(year + cost + wattage + managerFirstName + managerLastName);
 
-//		if (year != 0 & cost != 0 & wattage != 0 & managerFirstName != "" & managerLastName != "") {
-			updateBill(year, cost, wattage, managerFirstName, managerLastName, billId);
-//		}
-//		else {
-//			var updateColumn = document.getElementById('update');
-//			updateColumn.textContent = 'All fields must be filled in order to update this bill entry.';
-//		}
+		if (year < 1900 | year > 2100) {
+			document.getElementById("updateYear").focus();
+			var displayColumn = document.getElementById('display');
+			displayColumn.textContent = "Your year must be between 1900 and 2100";
+		}
+		else {
+			document.getElementById("updateYear").blur();
+			if (cost < 0) {
+				document.getElementById("updateCost").focus();
+				var displayColumn = document.getElementById('display');
+				displayColumn.textContent = "Your cost value must be positive";
+			}
+			else {
+				document.getElementById("updateCost").blur();
+				if (wattage < 0) {
+					document.getElementById("updateWattage").focus();
+					var displayColumn = document.getElementById('display');
+					displayColumn.textContent = "Your wattage value must be positive";
+				}
+				else {
+					document.getElementById("updateWattage").blur();
+					updateBill(year, cost, wattage, managerFirstName, managerLastName, billId);
+				}
+			}
+		}
+		
 
-	index();
+		index();
 	});
 }
 
