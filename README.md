@@ -25,7 +25,7 @@ http://18.222.105.233:8080/ElectricBillingREST/
 
 ## Project Description
 
-This project not only incorporates the CRUD functionality with SpringREST, but also JavaScript implementation allowing these operations to take place exclusively on a single page.
+This project not only incorporates the CRUD functionality with SpringREST, but also JavaScript and Angular implementation allowing these operations to take place exclusively on a single page.
 
 ## Project Operation
 
