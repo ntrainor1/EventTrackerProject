@@ -17,8 +17,8 @@ apply plugin: 'io.spring.dependency-management'
 apply plugin: 'war'
 war {
   enabled = true
-  archiveName = "${baseName}.war"     // Our app name, as defined in settings.gradle
-  destinationDir = file("./WAR")      // WAR/ folder under project root directory
+  archiveName = "${baseName}.war"  // Our app name, as defined in settings.gradle
+  destinationDir = file("./")      // WAR/ folder under project root directory
 }
 
 group = 'com.skilldistillery'
